@@ -57,8 +57,10 @@
     <h3>Conferência e entendimento do calculo da nova Emenda 2020</h3>
     <input type="number" name="remuneracao" id="remuneracao" placeholder="Informe a remuneração">
     <input type="button" class="button" value="Calcular" onclick="calcular()">
+    <input type="button" class="button" value="Apagar" onclick="refazeCalculo()">
+    <button onclick="alterdata()">Me leve para video explicativo da Alterdata</button>
 
-<div id="container" class="w3-panel w3-blue w3-card-4">
+    <div id="container" class="w3-panel w3-blue w3-card-4">
     <div id="res">
 
     </div>
@@ -75,6 +77,9 @@
 
     </div>
     <div id="aliEfetiva">
+
+    </div>
+    <div id="alterdata">
 
     </div>
 </div>
@@ -164,14 +169,19 @@
     resultado3.innerHTML = `Faixa 3 R$${faixa12.toFixed(2)} - R$${faixa9_5.toFixed(2)} - R$${faixa75.toFixed(2)} = R$${faixa12_5.toFixed(2)} x 12% = R$${aliFai12_5.toFixed(2)}`
     resultado4.innerHTML = `Faixa 4 R$${faixa14.toFixed(2)} - R$${faixa12_5.toFixed(2)} - R$${faixa9_5.toFixed(2)} - R$${faixa75.toFixed(2)} = R$${faixa14_5.toFixed(2)} x <strong>14%</strong> = R$${aliFai14_5.toFixed(2)}`
     aliEfetiva.innerHTML = `<br>Remuneração R$${remu.toFixed(2)}<br>Valor a descontar R$${descontoEfetivo_5.toFixed(2)} <br> Alíquota efetiva ${parseFloat(aliEfetiva_5).toFixed(2)}%`
+    
 }
 
 
  }
 
  function refazeCalculo(){
-
+    window.location.reload()
  }
+ function alterdata(){
+    window.location.href = "https://ajuda.alterdata.com.br/dpv/saiba-o-que-ira-mudar-na-tabela-do-inss"
+ }
+
 </script>
 
 </body>
