@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <style>
+        .button {
+          background-color: #4CAF50; /* Green */
+          border: none;
+          color: white;
+          padding: 16px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          -webkit-transition-duration: 0.4s; /* Safari */
+          transition-duration: 0.4s;
+          cursor: pointer;
+          font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        input[type=number] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 3px solid #ccc;
+        -webkit-transition: 0.5s;
+        transition: 0.5s;
+        outline: none;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        h1{
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 3px solid #ccc;
+        text-align: center;
+        background-color: #ccc;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+        }
+        h3{
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EMENDA CONSTITUICIONAL 103/2019 ART-28</title>
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+    <h1>EMENDA CONSTITUCIONAL 103/2019 ART-28</h1>
+    <h3>Conferência e entendimento do calculo da nova Emenda 2020</h3>
+    <input type="number" name="remuneracao" id="remuneracao" placeholder="Informe a remuneração">
+    <input type="button" class="button" value="Calcular" onclick="calcular()">
+
+<div id="container" class="w3-panel w3-blue w3-card-4">
+    <div id="res">
+
+    </div>
+    <div id="resultado1">
+
+    </div>
+    <div id="resultado2">
+
+    </div>
+    <div id="resultado3">
+
+    </div>
+    <div id="resultado4">
+
+    </div>
+    <div id="aliEfetiva">
+
+    </div>
+</div>
+
+<script>
+
+ function calcular(){
+    var remunera = window.document.getElementById('remuneracao')
+    var res = window.document.getElementById('res')
+    var remu = Number(remunera.value)
+    res.innerHTML = `Sua remuneraçao é de ${remu}`
+
+    var faixa75 = 1039
+    var faixa9 = 2089.60
+    var faixa12 = 3134.40
+    var faixa14 = 6101.06
+
+    var ali75 = 0.75
+    var ali9 = 9
+    var ali12 = 12
+    var ali14 = 14
+
+    if(remu <= faixa75){
+        var f1 = remu * 0.075
+        var faixa1 = parseFloat(f1).toFixed(2)
+        resultado1.innerHTML = `Faixa 1 Com a remuneração R$${remu.toFixed(2)} x 7,5% = ${faixa1}`
+
+}else if (remu > faixa75 && remu <= faixa9){
+    var f2 = remu - faixa75
+    var ali2 = f2 * 0.09
+    var faixa2 = parseFloat(ali2).toFixed(2)
+    var aliquota1 = faixa75 * 0.075
+    var aDescontar = ali2 + aliquota1
+    var efetiva = (aDescontar / remu) * 100
+    console.log(efetiva)
+    resultado1.innerHTML = `Faixa 1 R$${faixa75.toFixed(2)} x 7.5% = ${aliquota1} `
+    resultado2.innerHTML = `Faixa 2 R$ ${remu} - ${faixa75} = R$${f2} x 9% = ${ali2}`
+    aliEfetiva.innerHTML = `<br>Remuneração R$${remu.toFixed(2)}<br>Valor a descontar R$${aDescontar.toFixed(2)} <br>Alíquota efetiva ${parseFloat(efetiva).toFixed(2)}%`
+}else if(remu > faixa9 && remu <= faixa12){
+
+    var faixa75_3 = faixa75 * 0.075
+    var faixa9_3 = (faixa9 - faixa75) * 0.09
+    var faixa9_3_1 = faixa9 - faixa75
+    var faixa12_3 = (remu - faixa9_3_1 -faixa75) * 0.12
+    var descontoEfetivo_3 = faixa75_3 + faixa9_3 + faixa12_3
+    var aliEfetiva_3 = (descontoEfetivo_3 / remu) * 100
+
+ console.log(`${remu} - ${faixa9_3} - ${faixa75}`)
+    
+
+    resultado1.innerHTML = `Faixa 1 R$${faixa75.toFixed(2)} x 7.5% = R$${faixa75_3.toFixed(2)}`
+    resultado2.innerHTML = `Faixa 2 R$${faixa9.toFixed(2)} - R$${faixa75.toFixed(2)} = ${faixa9 - faixa75} x 9% = R$${faixa9_3.toFixed(2)}`
+    resultado3.innerHTML = `Faixa 3 R$${remu.toFixed(2)} - R$${faixa75.toFixed(2)} - R$${faixa9_3_1.toFixed(2)} = R$${remu - faixa9_3 -faixa75} x 12% = R$${faixa12_3.toFixed(2)}`
+    aliEfetiva.innerHTML = `<br>Remuneração R$${remu.toFixed(2)}<br>Valor a descontar R$${descontoEfetivo_3.toFixed(2)} <br>Alíquota efetiva ${parseFloat(aliEfetiva_3).toFixed(2)}%`
+
+}else if(remu > faixa12 && remu <= faixa14){
+    var faixa75_4 = faixa75 * 0.075
+    var faixa9_4 = faixa9 - faixa75
+    var aliFai9_4 = faixa9_4 * 0.09
+    var faixa12_4 = faixa12 - faixa9_4 - faixa75
+    var aliFai12_4 = faixa12_4 * 0.12
+    var faixa14_4 = (remu - faixa12_4 - faixa9_4 - faixa75)
+    var aliFai14_4 = faixa14_4 * 0.14
+    var descontoEfetivo_4 = aliFai14_4 + aliFai12_4 + aliFai9_4 + faixa75_4
+    var aliEfetiva_4 = (descontoEfetivo_4 / remu) * 100
+
+    resultado1.innerHTML = `Faixa 1 R$${faixa75.toFixed(2)} x 7.5% = R$${faixa75_4.toFixed(2)}`
+    resultado2.innerHTML = `Faixa 2 R$${faixa9.toFixed(2)} - R$${faixa75.toFixed(2)} = ${faixa9_4} x 9% = R$${aliFai9_4.toFixed(2)}`
+    resultado3.innerHTML = `Faixa 3 R$${faixa12.toFixed(2)} - R$${faixa9_4.toFixed(2)} - R$${faixa75.toFixed(2)} = R$${faixa12_4} x 12% = R$${aliFai12_4.toFixed(2)}`
+    resultado4.innerHTML = `Faixa 4 R$${remu.toFixed(2)} - R$${faixa12_4.toFixed(2)} - R$${faixa9_4.toFixed(2)} - R$${faixa75.toFixed(2)} = R$${faixa14_4.toFixed(2)} x 14% = R$${aliFai14_4.toFixed(2)}`
+    aliEfetiva.innerHTML = `<br>Remuneração R$${remu.toFixed(2)}<br>Valor a descontar R$${descontoEfetivo_4.toFixed(2)} <br> Alíquota efetiva ${parseFloat(aliEfetiva_4).toFixed(2)}%`
+
+
+}else if(remu > faixa14){
+    var faixa75_5 = faixa75 * 0.075
+    var faixa9_5 = faixa9 - faixa75
+    var aliFai9_5 = faixa9_5 * 0.09
+    var faixa12_5 = faixa12 - faixa9_5 - faixa75
+    var aliFai12_5 = faixa12_5 * 0.12
+    var faixa14_5 = (faixa14 - faixa12_5 - faixa9_5 - faixa75)
+    var aliFai14_5 = faixa14_5 * 0.14
+    var descontoEfetivo_5 = aliFai14_5 + aliFai12_5 + aliFai9_5 + faixa75_5
+    var aliEfetiva_5 = (descontoEfetivo_5 / remu) * 100
+
+    resultado1.innerHTML = `Faixa 1 R$${faixa75.toFixed(2)} x 7.5% = R$${faixa75_5.toFixed(2)}`
+    resultado2.innerHTML = `Faixa 2 R$${faixa9.toFixed(2)} - R$${faixa75.toFixed(2)} = ${faixa9_5} x 9% = R$${aliFai9_5.toFixed(2)}`
+    resultado3.innerHTML = `Faixa 3 R$${faixa12.toFixed(2)} - R$${faixa9_5.toFixed(2)} - R$${faixa75.toFixed(2)} = R$${faixa12_5.toFixed(2)} x 12% = R$${aliFai12_5.toFixed(2)}`
+    resultado4.innerHTML = `Faixa 4 R$${faixa14.toFixed(2)} - R$${faixa12_5.toFixed(2)} - R$${faixa9_5.toFixed(2)} - R$${faixa75.toFixed(2)} = R$${faixa14_5.toFixed(2)} x <strong>14%</strong> = R$${aliFai14_5.toFixed(2)}`
+    aliEfetiva.innerHTML = `<br>Remuneração R$${remu.toFixed(2)}<br>Valor a descontar R$${descontoEfetivo_5.toFixed(2)} <br> Alíquota efetiva ${parseFloat(aliEfetiva_5).toFixed(2)}%`
+}
+
+
+ }
+
+ function refazeCalculo(){
+
+ }
+</script>
+
+</body>
+</html>
