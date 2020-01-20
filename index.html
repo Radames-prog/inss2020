@@ -41,6 +41,7 @@
 
         }
         h3{
+            text-align: center;
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
         
@@ -168,7 +169,7 @@
     resultado2.innerHTML = `Faixa 2 R$${faixa9.toFixed(2)} - R$${faixa75.toFixed(2)} = ${faixa9_5} x 9% = R$${aliFai9_5.toFixed(2)}`
     resultado3.innerHTML = `Faixa 3 R$${faixa12.toFixed(2)} - R$${faixa9_5.toFixed(2)} - R$${faixa75.toFixed(2)} = R$${faixa12_5.toFixed(2)} x 12% = R$${aliFai12_5.toFixed(2)}`
     resultado4.innerHTML = `Faixa 4 R$${faixa14.toFixed(2)} - R$${faixa12_5.toFixed(2)} - R$${faixa9_5.toFixed(2)} - R$${faixa75.toFixed(2)} = R$${faixa14_5.toFixed(2)} x <strong>14%</strong> = R$${aliFai14_5.toFixed(2)}`
-    aliEfetiva.innerHTML = `<br>Remuneração R$${remu.toFixed(2)}<br>Valor a descontar R$${descontoEfetivo_5.toFixed(2)} <br> Alíquota efetiva ${parseFloat(aliEfetiva_5).toFixed(2)}%`
+    aliEfetiva.innerHTML = `<br>Remuneração R$${remu.toFixed(2)}<br>Valor a descontar R$${descontoEfetivo_5.toFixed(2)} <br> Alíquota efetiva ${parseFloat(aliEfetiva_5).toFixed(4)}%`
     
 }
 
